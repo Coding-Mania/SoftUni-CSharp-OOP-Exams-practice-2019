@@ -5,7 +5,7 @@
     using System.Reflection;
 
     using Contracts;
-    using Models.Astronauts.Contracts;
+    using Astronauts.Contracts;
 
     public class AstronautFactory : IAstronautFactory
     {

@@ -3,8 +3,8 @@
     using System.Collections.Generic;
     using System.Linq;
 
+    using Contracts;
     using Models.Astronauts.Contracts;
-    using Repositories.Contracts;
 
     public class AstronautRepository : IRepository<IAstronaut>
     {

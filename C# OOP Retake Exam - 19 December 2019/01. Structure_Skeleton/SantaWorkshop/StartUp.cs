@@ -1,7 +1,5 @@
 ﻿namespace SantaWorkshop
 {
-    using System;
-
     using Core;
     using Core.Contracts;
 
