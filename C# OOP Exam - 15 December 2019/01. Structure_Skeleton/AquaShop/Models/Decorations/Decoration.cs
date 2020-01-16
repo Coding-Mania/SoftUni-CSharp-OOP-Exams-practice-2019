@@ -1,5 +1,4 @@
-﻿
-namespace AquaShop.Models.Decorations
+﻿namespace AquaShop.Models.Decorations
 {
     using Contracts;
 

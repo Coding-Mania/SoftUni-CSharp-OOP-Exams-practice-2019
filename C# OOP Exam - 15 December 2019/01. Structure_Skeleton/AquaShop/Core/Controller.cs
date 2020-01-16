@@ -1,20 +1,21 @@
-﻿using AquaShop.Core.Contracts;
-using AquaShop.Models.Aquariums;
-using AquaShop.Models.Aquariums.Contracts;
-using AquaShop.Models.Decorations;
-using AquaShop.Models.Decorations.Contracts;
-using AquaShop.Models.Fish;
-using AquaShop.Models.Fish.Contracts;
-using AquaShop.Repositories;
-using AquaShop.Repositories.Contracts;
-using AquaShop.Utilities.Messages;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace AquaShop.Core
+﻿namespace AquaShop.Core
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+
+    using Contracts;
+    using Models.Aquariums;
+    using Models.Aquariums.Contracts;
+    using Models.Decorations;
+    using Models.Decorations.Contracts;
+    using Models.Fish;
+    using Models.Fish.Contracts;
+    using Repositories;
+    using Repositories.Contracts;
+    using Utilities.Messages;
+
     public class Controller : IController
     {
         private readonly IRepository<IDecoration> decorations;

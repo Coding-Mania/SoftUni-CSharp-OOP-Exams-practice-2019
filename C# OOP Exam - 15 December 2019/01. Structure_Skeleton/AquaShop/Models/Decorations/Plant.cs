@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AquaShop.Models.Decorations
+﻿namespace AquaShop.Models.Decorations
 {
     public class Plant : Decoration
     {

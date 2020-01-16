@@ -1,19 +1,20 @@
-﻿using AquaShop.Models.Aquariums.Contracts;
-using AquaShop.Models.Decorations.Contracts;
-using AquaShop.Models.Fish.Contracts;
-using AquaShop.Utilities.Messages;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace AquaShop.Models.Aquariums
+﻿namespace AquaShop.Models.Aquariums
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+
+    using Aquariums.Contracts;
+    using Decorations.Contracts;
+    using Fish.Contracts;
+    using Utilities.Messages;
+
     public abstract class Aquarium : IAquarium
     {
-        private string name;
         private readonly ICollection<IDecoration> decorations;
         private readonly ICollection<IFish> fish;
+        private string name;
 
         protected Aquarium(int capacity, string name)
         {
