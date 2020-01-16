@@ -1,6 +1,5 @@
 ﻿namespace SantaWorkshop.Repositories.Contracts
 {
-    using System;
     using System.Collections.Generic;
 
     public interface IRepository<T>

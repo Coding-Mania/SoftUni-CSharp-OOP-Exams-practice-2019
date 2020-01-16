@@ -1,10 +1,11 @@
-﻿using SantaWorkshop.Models.Dwarfs.Contracts;
-using SantaWorkshop.Models.Presents.Contracts;
-using SantaWorkshop.Models.Workshops.Contracts;
-using System.Linq;
-
-namespace SantaWorkshop.Models.Workshops
+﻿namespace SantaWorkshop.Models.Workshops
 {
+    using System.Linq;
+
+    using Dwarfs.Contracts;
+    using Presents.Contracts;
+    using Workshops.Contracts;
+
     public class Workshop : IWorkshop
     {
         public void Craft(IPresent present, IDwarf dwarf)
@@ -24,7 +25,6 @@ namespace SantaWorkshop.Models.Workshops
                         instrument = dwarf.Instruments.FirstOrDefault(i => !i.IsBroken());
                     }
                 }
-
             }
         }
     }

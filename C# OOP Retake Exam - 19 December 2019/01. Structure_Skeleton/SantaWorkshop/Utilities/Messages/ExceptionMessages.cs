@@ -1,7 +1,5 @@
 ﻿namespace SantaWorkshop.Utilities.Messages
 {
-    using System;
-
     public static class ExceptionMessages
     {
         public const string InvalidDwarfName = "Dwarf name cannot be null or empty.";

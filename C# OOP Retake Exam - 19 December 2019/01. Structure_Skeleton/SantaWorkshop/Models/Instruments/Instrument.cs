@@ -1,10 +1,7 @@
-﻿using SantaWorkshop.Models.Instruments.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SantaWorkshop.Models.Instruments
+﻿namespace SantaWorkshop.Models.Instruments
 {
+    using Contracts;
+
     public class Instrument : IInstrument
     {
         private const int DecreasesEnergyPoints = 10;
@@ -13,19 +10,20 @@ namespace SantaWorkshop.Models.Instruments
 
         public Instrument(int power)
         {
-            Power = power;
+            this.Power = power;
         }
 
         public int Power
         {
-            get => power;
+            get => this.power;
             private set
             {
                 if (value < 0)
                 {
                     value = 0;
                 }
-                power = value;
+
+                this.power = value;
             }
         }
 

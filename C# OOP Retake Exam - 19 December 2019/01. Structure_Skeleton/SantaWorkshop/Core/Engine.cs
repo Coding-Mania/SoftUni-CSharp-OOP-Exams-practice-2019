@@ -2,9 +2,9 @@
 {
     using System;
 
-    using SantaWorkshop.IO;
-    using SantaWorkshop.IO.Contracts;
-    using SantaWorkshop.Core.Contracts;
+    using Contracts;
+    using IO;
+    using IO.Contracts;
 
     public class Engine : IEngine
     {
@@ -23,11 +23,13 @@
         {
             while (true)
             {
-                string[] input = reader.ReadLine().Split();
+                string[] input = this.reader.ReadLine().Split();
+
                 if (input[0] == "Exit")
                 {
                     Environment.Exit(0);
                 }
+
                 try
                 {
                     string result = string.Empty;
@@ -37,38 +39,38 @@
                         string dwarfType = input[1];
                         string dwarfName = input[2];
 
-                        result = controller.AddDwarf(dwarfType, dwarfName);
+                        result = this.controller.AddDwarf(dwarfType, dwarfName);
                     }
                     else if (input[0] == "AddPresent")
                     {
                         string presentName = input[1];
                         int energyRequired = int.Parse(input[2]);
 
-                        result = controller.AddPresent(presentName, energyRequired);
+                        result = this.controller.AddPresent(presentName, energyRequired);
                     }
                     else if (input[0] == "AddInstrumentToDwarf")
                     {
                         string dwarfname = input[1];
                         int power = int.Parse(input[2]);
 
-                        result = controller.AddInstrumentToDwarf(dwarfname, power);
+                        result = this.controller.AddInstrumentToDwarf(dwarfname, power);
                     }
                     else if (input[0] == "CraftPresent")
                     {
                         string presentName = input[1];
 
-                        result = controller.CraftPresent(presentName);
+                        result = this.controller.CraftPresent(presentName);
                     }
                     else if (input[0] == "Report")
                     {
-                        result = controller.Report();
+                        result = this.controller.Report();
                     }
 
-                    writer.WriteLine(result);
+                    this.writer.WriteLine(result);
                 }
                 catch (Exception ex)
                 {
-                    writer.WriteLine(ex.Message);
+                    this.writer.WriteLine(ex.Message);
                 }
             }
         }

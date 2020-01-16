@@ -1,9 +1,8 @@
 ﻿namespace SantaWorkshop.Models.Dwarfs.Contracts
 {
-    using System;
     using System.Collections.Generic;
 
-    using SantaWorkshop.Models.Instruments.Contracts;
+    using Instruments.Contracts;
 
     public interface IDwarf
     {

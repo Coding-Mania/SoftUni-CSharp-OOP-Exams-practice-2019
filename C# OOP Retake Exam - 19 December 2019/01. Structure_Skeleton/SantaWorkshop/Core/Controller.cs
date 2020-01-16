@@ -1,21 +1,21 @@
-﻿using SantaWorkshop.Core.Contracts;
-using SantaWorkshop.Models.Dwarfs;
-using SantaWorkshop.Models.Dwarfs.Contracts;
-using SantaWorkshop.Models.Instruments;
-using SantaWorkshop.Models.Presents;
-using SantaWorkshop.Models.Presents.Contracts;
-using SantaWorkshop.Models.Workshops;
-using SantaWorkshop.Models.Workshops.Contracts;
-using SantaWorkshop.Repositories;
-using SantaWorkshop.Repositories.Contracts;
-using SantaWorkshop.Utilities.Messages;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace SantaWorkshop.Core
+﻿namespace SantaWorkshop.Core
 {
+    using System;
+    using System.Linq;
+    using System.Text;
+
+    using Contracts;
+    using Models.Dwarfs;
+    using Models.Dwarfs.Contracts;
+    using Models.Instruments;
+    using Models.Presents;
+    using Models.Presents.Contracts;
+    using Models.Workshops;
+    using Models.Workshops.Contracts;
+    using Repositories;
+    using Repositories.Contracts;
+    using Utilities.Messages;
+
     public class Controller : IController
     {
         private readonly IRepository<IDwarf> dwarfs;
@@ -62,12 +62,11 @@ namespace SantaWorkshop.Core
                 throw new InvalidOperationException(ExceptionMessages.InexistentDwarf);
             }
 
-            var instr = new Instrument(power);
+            var instrument = new Instrument(power);
 
-            dwarf.AddInstrument(instr);
+            dwarf.AddInstrument(instrument);
 
             return string.Format(OutputMessages.InstrumentAdded, power, dwarfName);
-
         }
 
         public string AddPresent(string presentName, int energyRequired)
@@ -85,16 +84,15 @@ namespace SantaWorkshop.Core
 
             IDwarf dwarf = this.dwarfs.Models.FirstOrDefault(d => d.Energy >= 50 && d.Instruments.Any(i => !i.IsBroken()));
 
-
             if (this.dwarfs.Models.Any(d => d.Instruments.Any(i => i.Power > 0)))
             {
-                foreach (var item in this.dwarfs.Models)
+                foreach (var instrument in this.dwarfs.Models)
                 {
-                    var instCount = GetCount(item);
+                    var instCount = this.GetCount(instrument);
 
-                    if (item.Energy >= dwarf.Energy && instCount > GetCount(dwarf))
+                    if (instrument.Energy >= dwarf.Energy && instCount > this.GetCount(dwarf))
                     {
-                        dwarf = item;
+                        dwarf = instrument;
                     }
                 }
             }
@@ -103,8 +101,6 @@ namespace SantaWorkshop.Core
                 dwarf = this.dwarfs.Models.FirstOrDefault(d => d.Energy >= 50 && d.Instruments.Any(i => !i.IsBroken()));
             }
 
-
-
             if (dwarf is null)
             {
                 throw new InvalidOperationException(ExceptionMessages.DwarfsNotReady);
@@ -112,7 +108,7 @@ namespace SantaWorkshop.Core
 
             if (!present.IsDone())
             {
-                workshop.Craft(present, dwarf);
+                this.workshop.Craft(present, dwarf);
             }
 
             if (dwarf.Energy == 0)
@@ -125,27 +121,11 @@ namespace SantaWorkshop.Core
             if (masage == "done")
             {
                 return string.Format(OutputMessages.PresentIsDone, presentName);
-
             }
             else
             {
                 return string.Format(OutputMessages.PresentIsNotDone, presentName);
             }
-        }
-
-        private int GetCount(IDwarf item)
-        {
-            var counter = 0;
-
-            foreach (var inst in item.Instruments)
-            {
-                if (!inst.IsBroken())
-                {
-                    counter++;
-                }
-            }
-
-            return counter;
         }
 
         public string Report()
@@ -183,6 +163,21 @@ namespace SantaWorkshop.Core
             }
 
             return sb.ToString().TrimEnd();
+        }
+
+        private int GetCount(IDwarf item)
+        {
+            var counter = 0;
+
+            foreach (var inst in item.Instruments)
+            {
+                if (!inst.IsBroken())
+                {
+                    counter++;
+                }
+            }
+
+            return counter;
         }
     }
 }

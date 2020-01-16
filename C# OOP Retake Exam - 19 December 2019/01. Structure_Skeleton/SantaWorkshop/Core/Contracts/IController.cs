@@ -1,7 +1,5 @@
 ﻿namespace SantaWorkshop.Core.Contracts
 {
-    using System;
-
     public interface IController
     {
         string AddDwarf(string dwarfType, string dwarfName);

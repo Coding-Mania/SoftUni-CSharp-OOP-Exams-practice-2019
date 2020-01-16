@@ -1,30 +1,30 @@
-﻿using SantaWorkshop.Models.Dwarfs.Contracts;
-using SantaWorkshop.Models.Instruments.Contracts;
-using SantaWorkshop.Utilities.Messages;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace SantaWorkshop.Models.Dwarfs
+﻿namespace SantaWorkshop.Models.Dwarfs
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
+    using Contracts;
+    using Instruments.Contracts;
+    using Utilities.Messages;
+
     public abstract class Dwarf : IDwarf
     {
         private const int DecreasesEnergyPoints = 10;
+        private readonly ICollection<IInstrument> instruments;
         private string name;
         private int energy;
-        private ICollection<IInstrument> instruments;
 
         protected Dwarf(string name, int energy)
         {
-            Name = name;
-            Energy = energy;
+            this.Name = name;
+            this.Energy = energy;
             this.instruments = new List<IInstrument>();
         }
 
         public string Name
         {
-            get => name;
+            get => this.name;
             private set
             {
                 if (string.IsNullOrWhiteSpace(value))
@@ -32,13 +32,13 @@ namespace SantaWorkshop.Models.Dwarfs
                     throw new ArgumentException(ExceptionMessages.InvalidDwarfName);
                 }
 
-                name = value;
+                this.name = value;
             }
         }
 
         public int Energy
         {
-            get => energy;
+            get => this.energy;
             protected set
             {
                 if (value < 0)
@@ -46,7 +46,7 @@ namespace SantaWorkshop.Models.Dwarfs
                     value = 0;
                 }
 
-                energy = value;
+                this.energy = value;
             }
         }
 

@@ -1,15 +1,14 @@
-﻿using SantaWorkshop.Models.Dwarfs.Contracts;
-using SantaWorkshop.Repositories.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace SantaWorkshop.Repositories
+﻿namespace SantaWorkshop.Repositories
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
+    using Contracts;
+    using Models.Dwarfs.Contracts;
+
     public class DwarfRepository : IRepository<IDwarf>
     {
-        private ICollection<IDwarf> models;
+        private readonly ICollection<IDwarf> models;
 
         public DwarfRepository()
         {

@@ -2,7 +2,7 @@
 {
     using System;
 
-    using SantaWorkshop.IO.Contracts;
+    using Contracts;
 
     public class Reader : IReader
     {

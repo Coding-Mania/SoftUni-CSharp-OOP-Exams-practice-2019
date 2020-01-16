@@ -1,7 +1,5 @@
 ﻿namespace SantaWorkshop.Models.Presents.Contracts
 {
-    using System;
-
     public interface IPresent
     {
         string Name { get; }

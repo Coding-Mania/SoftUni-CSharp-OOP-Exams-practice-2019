@@ -1,7 +1,5 @@
 ﻿namespace SantaWorkshop.Models.Instruments.Contracts
 {
-    using System;
-
     public interface IInstrument
     {
         int Power { get; }

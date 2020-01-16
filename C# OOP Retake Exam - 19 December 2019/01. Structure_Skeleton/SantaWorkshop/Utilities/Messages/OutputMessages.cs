@@ -1,7 +1,5 @@
 ﻿namespace SantaWorkshop.Utilities.Messages
 {
-    using System;
-
     public static class OutputMessages
     {
         public const string DwarfAdded = "Successfully added {0} named {1}.";

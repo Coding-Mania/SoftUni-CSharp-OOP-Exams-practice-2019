@@ -1,9 +1,7 @@
 ﻿namespace SantaWorkshop.Models.Workshops.Contracts
 {
-    using System;
-
-    using SantaWorkshop.Models.Dwarfs.Contracts;
-    using SantaWorkshop.Models.Presents.Contracts;
+    using Dwarfs.Contracts;
+    using Presents.Contracts;
 
     public interface IWorkshop
     {

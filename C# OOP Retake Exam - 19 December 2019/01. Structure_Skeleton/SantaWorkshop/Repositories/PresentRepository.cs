@@ -1,15 +1,14 @@
-﻿using SantaWorkshop.Models.Presents.Contracts;
-using SantaWorkshop.Repositories.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace SantaWorkshop.Repositories
+﻿namespace SantaWorkshop.Repositories
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
+    using Contracts;
+    using Models.Presents.Contracts;
+
     public class PresentRepository : IRepository<IPresent>
     {
-        private ICollection<IPresent> models;
+        private readonly ICollection<IPresent> models;
 
         public PresentRepository()
         {

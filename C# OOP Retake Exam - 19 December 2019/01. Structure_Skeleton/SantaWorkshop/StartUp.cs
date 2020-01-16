@@ -2,8 +2,8 @@
 {
     using System;
 
-    using SantaWorkshop.Core;
-    using SantaWorkshop.Core.Contracts;
+    using Core;
+    using Core.Contracts;
 
     public class StartUp
     {

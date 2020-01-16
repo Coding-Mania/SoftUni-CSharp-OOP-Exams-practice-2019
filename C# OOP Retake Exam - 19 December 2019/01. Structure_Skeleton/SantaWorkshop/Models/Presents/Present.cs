@@ -1,11 +1,10 @@
-﻿using SantaWorkshop.Models.Presents.Contracts;
-using SantaWorkshop.Utilities.Messages;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SantaWorkshop.Models.Presents
+﻿namespace SantaWorkshop.Models.Presents
 {
+    using System;
+
+    using Contracts;
+    using Utilities.Messages;
+
     public class Present : IPresent
     {
         private const int DecreasesEnergyPoints = 10;
@@ -14,13 +13,13 @@ namespace SantaWorkshop.Models.Presents
 
         public Present(string name, int energyRequired)
         {
-            Name = name;
-            EnergyRequired = energyRequired;
+            this.Name = name;
+            this.EnergyRequired = energyRequired;
         }
 
         public string Name
         {
-            get => name;
+            get => this.name;
             private set
             {
                 if (string.IsNullOrWhiteSpace(value))
@@ -28,22 +27,24 @@ namespace SantaWorkshop.Models.Presents
                     throw new ArgumentException(ExceptionMessages.InvalidPresentName);
                 }
 
-                name = value;
+                this.name = value;
             }
         }
 
         public int EnergyRequired
         {
-            get => energyRequired;
+            get => this.energyRequired;
             private set
             {
                 if (value < 0)
                 {
                     value = 0;
                 }
-                energyRequired = value;
+
+                this.energyRequired = value;
             }
         }
+
         public void GetCrafted() => this.EnergyRequired -= DecreasesEnergyPoints;
 
         public bool IsDone() => this.EnergyRequired == 0;
