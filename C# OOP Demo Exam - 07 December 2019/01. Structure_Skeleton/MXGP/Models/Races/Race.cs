@@ -11,9 +11,9 @@
     {
         private const int MinLaps = 1;
         private const int MinNameLenght = 5;
+        private readonly List<IRider> riders;
         private string name;
         private int laps;
-        private readonly List<IRider> riders;
 
         public Race(string name, int laps)
         {

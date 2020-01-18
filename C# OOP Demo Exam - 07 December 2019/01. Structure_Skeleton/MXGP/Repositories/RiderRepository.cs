@@ -17,7 +17,7 @@
 
         public void Add(IRider model) => this.riders.Add(model);
 
-        public IReadOnlyCollection<IRider> GetAll() => riders.ToList().AsReadOnly();
+        public IReadOnlyCollection<IRider> GetAll() => this.riders.ToList().AsReadOnly();
 
         public IRider GetByName(string name) => this.riders.FirstOrDefault(r => r.Name == name);
 

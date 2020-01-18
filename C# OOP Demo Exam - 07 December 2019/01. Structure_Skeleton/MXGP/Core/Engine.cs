@@ -21,7 +21,6 @@
 
         public void Run()
         {
-
             while (true)
             {
                 var input = this.reader.ReadLine().Split();
@@ -70,7 +69,6 @@
                 }
                 catch (Exception ex)
                 {
-
                     output = ex.Message;
                 }
 

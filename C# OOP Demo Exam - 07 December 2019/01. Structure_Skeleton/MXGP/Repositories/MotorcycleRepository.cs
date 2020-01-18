@@ -17,7 +17,7 @@
 
         public void Add(IMotorcycle model) => this.motorcycles.Add(model);
 
-        public IReadOnlyCollection<IMotorcycle> GetAll() => motorcycles.ToList().AsReadOnly();
+        public IReadOnlyCollection<IMotorcycle> GetAll() => this.motorcycles.ToList().AsReadOnly();
 
         public IMotorcycle GetByName(string model) => this.motorcycles.FirstOrDefault(m => m.Model == model);
 

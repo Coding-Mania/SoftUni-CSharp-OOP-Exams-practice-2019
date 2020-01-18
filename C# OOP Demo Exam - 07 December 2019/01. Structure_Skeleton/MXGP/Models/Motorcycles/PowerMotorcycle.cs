@@ -11,7 +11,6 @@
         private const int MaximumHorsepower = 100;
         private int horsePower;
 
-
         public PowerMotorcycle(string model, int horsePower)
             : base(model, InitialCubicCentimeters)
         {

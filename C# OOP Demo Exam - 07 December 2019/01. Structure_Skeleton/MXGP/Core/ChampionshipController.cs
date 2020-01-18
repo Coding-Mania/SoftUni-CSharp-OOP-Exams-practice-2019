@@ -135,7 +135,6 @@
                 throw new InvalidOperationException(string.Format(ExceptionMessages.RaceInvalid, raceName, RaceParticipantCount));
             }
 
-
             var laps = race.Laps;
 
             var riders = race.Riders.OrderByDescending(r => r.Motorcycle.CalculateRacePoints(laps)).ThenBy(r => r.NumberOfWins).ToList();
