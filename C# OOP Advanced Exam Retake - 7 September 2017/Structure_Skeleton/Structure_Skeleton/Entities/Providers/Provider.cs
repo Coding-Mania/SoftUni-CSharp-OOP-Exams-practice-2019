@@ -4,10 +4,10 @@ public abstract class Provider : IProvider
 {
     private double durability;
 
-    protected Provider(double energyOutput, int id)
+    protected Provider(int iD, double energyOutput)
     {
+        this.ID = iD;
         this.EnergyOutput = energyOutput;
-        this.ID = id;
         this.Durability = Constants.InitialDurability;
     }
 
@@ -22,7 +22,7 @@ public abstract class Provider : IProvider
         {
             if (value < 0)
             {
-                throw new ArgumentException(string.Format(Constants.BrokenEntity, nameof(Provider)));
+                throw new Exception();
             }
 
             this.durability = value;
@@ -31,7 +31,7 @@ public abstract class Provider : IProvider
 
     public void Broke()
     {
-        this.Durability -= Constants.DurabilityDecreasedPoints;
+        this.Durability -= Constants.DurabilityDecreased;
     }
 
     public double Produce()
@@ -42,5 +42,10 @@ public abstract class Provider : IProvider
     public void Repair(double val)
     {
         this.Durability += val;
+    }
+
+    public override string ToString()
+    {
+        return $"{this.GetType().Name}\nDurability: {this.Durability}";
     }
 }

@@ -6,7 +6,8 @@ public class InfinityHarvester : Harvester
 
     private double durability;
 
-    public InfinityHarvester(int id, double oreOutput, double energyRequirement) : base(id, oreOutput, energyRequirement)
+    public InfinityHarvester(int id, double oreOutput, double energyRequirement) 
+        : base(id, oreOutput, energyRequirement)
     {
         this.OreOutput /= OreOutputDivider;
     }
@@ -14,6 +15,6 @@ public class InfinityHarvester : Harvester
     public override double Durability
     {
         get => this.durability;
-        protected set => this.durability = Math.Max(0, value);
+        protected set => this.durability = 1000;
     }
 }

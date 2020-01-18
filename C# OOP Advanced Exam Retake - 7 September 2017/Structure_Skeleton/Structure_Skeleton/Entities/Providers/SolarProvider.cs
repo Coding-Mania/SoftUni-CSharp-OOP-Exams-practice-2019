@@ -2,8 +2,8 @@
 {
     private const int DurabilityIncreasedPoint = 500;
 
-    public SolarProvider(double energyOutput, int id) 
-        : base(energyOutput, id)
+    public SolarProvider(int iD, double energyOutput)
+        : base(iD, energyOutput)
     {
         this.Durability += DurabilityIncreasedPoint;
     }

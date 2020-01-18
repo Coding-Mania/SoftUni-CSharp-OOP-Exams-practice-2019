@@ -1,29 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 public class HarvesterController : IHarvesterController
 {
+    private readonly List<IHarvester> harvesters;
+    private readonly IHarvesterFactory factory;
+    private readonly IEnergyRepository energyRepository;
     private string mode;
-    private IHarvesterFactory factory;
-    private IList<IHarvester> harvesters;
-    private IEnergyRepository energyRepository;
 
-    public HarvesterController(IHarvesterFactory factory, IList<IHarvester> harvesters, IEnergyRepository energyRepository)
+    public HarvesterController(
+        List<IHarvester> harvesters,
+        IHarvesterFactory factory,
+        IEnergyRepository energyRepository)
     {
-        this.mode = Constants.DefaultMode;
-        this.factory = factory;
+        this.mode = "Full";
         this.harvesters = harvesters;
+        this.factory = factory;
         this.energyRepository = energyRepository;
     }
 
     public double OreProduced { get; private set; }
 
+    public IReadOnlyCollection<IEntity> Entities => this.harvesters.AsReadOnly();
+
     public string ChangeMode(string mode)
     {
         this.mode = mode;
 
-        IList<IHarvester> reminder = new List<IHarvester>();
+        var reminder = new List<IHarvester>();
 
         foreach (var harvester in this.harvesters)
         {
@@ -42,7 +46,7 @@ public class HarvesterController : IHarvesterController
             this.harvesters.Remove(entity);
         }
 
-        return string.Format(Constants.ModeChanged, this.mode);
+        return string.Format(Constants.ChangeMode, this.mode);
     }
 
     public string Produce()
@@ -91,10 +95,9 @@ public class HarvesterController : IHarvesterController
     public string Register(IList<string> args)
     {
         var harvester = this.factory.GenerateHarvester(args);
+
         this.harvesters.Add(harvester);
 
-        var result = string.Format(Constants.SuccessfullRegistration, harvester.GetType().Name);
-
-        return result;
+        return string.Format(Constants.SuccessfullRegistration, harvester.GetType().Name);
     }
 }

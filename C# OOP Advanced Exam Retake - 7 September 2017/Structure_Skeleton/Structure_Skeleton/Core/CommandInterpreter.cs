@@ -17,29 +17,29 @@ public class CommandInterpreter : ICommandInterpreter
 
     public string ProcessCommand(IList<string> args)
     {
-        ICommand command = CreateCommand(args);
+        ICommand command = this.GetCommad(args);
 
         return command.Execute();
     }
 
-    private ICommand CreateCommand(IList<string> args)
+    private ICommand GetCommad(IList<string> args)
     {
-        var commandName = args[0];
+        var commmandName = args[0] + "Command";
 
         var type = Assembly.GetCallingAssembly()
             .GetTypes()
-            .FirstOrDefault(c => c.Name == commandName);
+            .FirstOrDefault(t => t.Name == commmandName);
 
-        var parameterInfos = type.GetConstructors()
+        var parameterInfo = type
+            .GetConstructors()
             .First()
             .GetParameters();
 
-        object[] parameters = new object[parameterInfos.Length];
+        object[] parameters = new object[parameterInfo.Length];
 
-        for (int i = 0; i < parameters.Length; i++)
+        for (int i = 0; i < parameterInfo.Length; i++)
         {
-            var paramType = parameterInfos[i]
-                .ParameterType;
+            var paramType = parameterInfo[i].ParameterType;
 
             if (paramType == typeof(IList<string>))
             {
@@ -47,11 +47,12 @@ public class CommandInterpreter : ICommandInterpreter
             }
             else
             {
-                var paramInfo = this.GetType()
-                    .GetRuntimeProperties()
+                var prop = this
+                    .GetType()
+                    .GetProperties()
                     .FirstOrDefault(p => p.PropertyType == paramType);
 
-                parameters[i] = paramInfo.GetValue(this);
+                parameters[i] = prop.GetValue(this);
             }
         }
 

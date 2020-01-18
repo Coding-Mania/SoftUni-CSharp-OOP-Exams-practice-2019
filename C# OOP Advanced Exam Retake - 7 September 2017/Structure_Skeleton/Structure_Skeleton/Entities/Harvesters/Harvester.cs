@@ -25,7 +25,7 @@ public abstract class Harvester : IHarvester
         {
             if (value < 0)
             {
-                throw new ArgumentException(string.Format(Constants.BrokenEntity, nameof(Provider)));
+                throw new Exception();
             }
 
             this.durability = value;
@@ -34,11 +34,16 @@ public abstract class Harvester : IHarvester
 
     public void Broke()
     {
-        this.Durability -= Constants.DurabilityDecreasedPoints;
+        this.Durability -= Constants.DurabilityDecreased;
     }
 
     public double Produce()
     {
         return this.OreOutput;
+    }
+
+    public override string ToString()
+    {
+        return $"{this.GetType().Name}\nDurability: {this.Durability}";
     }
 }

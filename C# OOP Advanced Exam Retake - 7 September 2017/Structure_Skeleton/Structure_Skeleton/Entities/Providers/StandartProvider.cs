@@ -1,7 +1,7 @@
 ﻿public class StandartProvider : Provider
 {
-    public StandartProvider(double energyOutput, int id) 
-        : base(energyOutput, id)
+    public StandartProvider(int iD, double energyOutput)
+        : base(iD, energyOutput)
     {
     }
 }

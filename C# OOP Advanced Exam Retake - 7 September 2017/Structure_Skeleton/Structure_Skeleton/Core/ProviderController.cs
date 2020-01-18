@@ -4,15 +4,15 @@ using System.Linq;
 
 public class ProviderController : IProviderController
 {
-    private List<IProvider> providers;
-    private IEnergyRepository energyRepository;
-    private IProviderFactory factory;
+    private readonly List<IProvider> providers;
+    private readonly IEnergyRepository energyRepository;
+    private readonly IProviderFactory factory;
 
-    public ProviderController(IEnergyRepository energyRepository)
+    public ProviderController(List<IProvider> providers, IEnergyRepository energyRepository, IProviderFactory factory)
     {
+        this.providers = providers;
         this.energyRepository = energyRepository;
-        this.providers = new List<IProvider>();
-        this.factory = new ProviderFactory();
+        this.factory = factory;
     }
 
     public double TotalEnergyProduced { get; private set; }
@@ -23,8 +23,7 @@ public class ProviderController : IProviderController
     {
         var provider = this.factory.GenerateProvider(arguments);
         this.providers.Add(provider);
-        return string.Format(Constants.SuccessfullRegistration, 
-            provider.GetType().Name);
+        return string.Format(Constants.SuccessfullRegistration, provider.GetType().Name);
     }
 
     public string Produce()

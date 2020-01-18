@@ -1,12 +1,12 @@
 ﻿public class PressureProvider : Provider
 {
-    private const int DurabilityIncreasedPoint = 300;
-    private const int EnergyOutputMultiplied = 2;
+    private const int DurabilityDecreasedPoint = 300;
+    private const double OutputMultipliedPoint = 2;
 
-    public PressureProvider(double energyOutput, int id) 
-        : base(energyOutput, id)
+    public PressureProvider(int iD, double energyOutput)
+        : base(iD, energyOutput)
     {
-        this.Durability += DurabilityIncreasedPoint;
-        this.EnergyOutput *= EnergyOutputMultiplied;
+        this.Durability -= DurabilityDecreasedPoint;
+        this.EnergyOutput *= OutputMultipliedPoint;
     }
 }

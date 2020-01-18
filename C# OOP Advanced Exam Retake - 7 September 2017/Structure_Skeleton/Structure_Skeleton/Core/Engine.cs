@@ -1,48 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 public class Engine
 {
-    private DraftManager manager;
+    private readonly IWriter writer;
+    private readonly IReader reader;
+    private readonly ICommandInterpreter commandInterpreter;
 
-    public Engine()
+    public Engine(IWriter writer, IReader reader, ICommandInterpreter commandInterpreter)
     {
-        this.manager = new DraftManager();
+        this.writer = writer;
+        this.reader = reader;
+        this.commandInterpreter = commandInterpreter;
     }
 
     public void Run()
     {
         while (true)
         {
-            var input = Console.ReadLine();
-            var data = input.Split().ToList();
-            var command = data[0];
-            switch (command)
+            var input = this.reader.ReadLine()
+                .Split();
+
+            var result = this.commandInterpreter.ProcessCommand(input);
+
+            this.writer.WriteLine(result);
+
+            if (input[0] == "Shutdown")
             {
-                case "RegisterHarvester":
-                    var args = new List<string>(data.Skip(1).ToList());
-                    manager.RegisterHarvester(args);
-                    break;
-                case "RegisterProvider":
-                    args = new List<string>(data.Skip(1).ToList());
-                    manager.RegisterProvider(args);
-                    break;
-                case "Day":
-                    manager.Day();
-                    break;
-                case "Mode":
-                    args = new List<string>(data.Skip(1).ToList());
-                    manager.Mode(args);
-                    break;
-                case "Check":
-                    args = new List<string>(data.Skip(1).ToList());
-                    //Console.WriteLine(manager.Check(args));
-                    break;
-                default:
-                    manager.ShutDown();
-                    Environment.Exit(0);
-                    break;
+                return;
             }
         }
     }

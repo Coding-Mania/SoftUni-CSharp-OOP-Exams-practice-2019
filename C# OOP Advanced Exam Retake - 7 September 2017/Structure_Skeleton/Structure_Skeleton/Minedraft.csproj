@@ -58,14 +58,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\RefreshEntitiesAttribute.cs" />
     <Compile Include="Constants\Constants.cs" />
     <Compile Include="Core\CommandInterpreter.cs" />
     <Compile Include="Core\Commands\Command.cs" />
-    <Compile Include="Core\Commands\RegisterCommand.cs" />
+    <Compile Include="Core\Commands\DayCommand.cs" />
+    <Compile Include="Core\EnergyRepository.cs" />
     <Compile Include="Core\Engine.cs" />
     <Compile Include="Core\HarvesterController.cs" />
-    <Compile Include="Core\IEnergyRepository.cs" />
+    <Compile Include="Core\Commands\InspectCommand.cs" />
+    <Compile Include="Core\Commands\ModeCommand.cs" />
+    <Compile Include="Core\Commands\RegisterCommand.cs" />
+    <Compile Include="Core\Commands\RepairCommand.cs" />
+    <Compile Include="Core\Commands\ShutdownCommand.cs" />
     <Compile Include="Entities\Harvesters\HammerHarvester.cs" />
     <Compile Include="Entities\Harvesters\Harvester.cs" />
     <Compile Include="Entities\Harvesters\InfinityHarvester.cs" />
@@ -91,6 +95,8 @@
     <Compile Include="Interfaces\Entities\IEntity.cs" />
     <Compile Include="Interfaces\IO\IReader.cs" />
     <Compile Include="Interfaces\IO\IWriter.cs" />
+    <Compile Include="IO\ConsoleReader.cs" />
+    <Compile Include="IO\ConsoleWriter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
