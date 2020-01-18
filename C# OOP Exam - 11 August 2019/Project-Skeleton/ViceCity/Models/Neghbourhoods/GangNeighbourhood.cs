@@ -40,7 +40,6 @@
                 {
                     if (civilPlayer.IsAlive)
                     {
-
                         foreach (var gun in civilPlayer.GunRepository.Models)
                         {
                             if (!gun.CanFire)

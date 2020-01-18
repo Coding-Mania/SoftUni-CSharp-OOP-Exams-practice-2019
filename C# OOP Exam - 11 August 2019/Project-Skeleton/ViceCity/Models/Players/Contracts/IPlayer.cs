@@ -14,6 +14,5 @@
         int LifePoints { get; }
 
         void TakeLifePoints(int points);
-            
     }
 }

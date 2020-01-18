@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ViceCity.Core.Contracts
+﻿namespace ViceCity.Core.Contracts
 {
-    interface IEngine
+    public interface IEngine
     {
         void Run();
     }

@@ -1,11 +1,12 @@
 ﻿namespace ViceCity.Models.Players
 {
+    using System;
+
     using Contracts;
     using Guns.Contracts;
+    using Repositories;
     using Repositories.Contracts;
-    using System;
-    using ViceCity.Repositories;
-    using ViceCity.Utilities.Messages;
+    using Utilities.Messages;
 
     public abstract class Player : IPlayer
     {

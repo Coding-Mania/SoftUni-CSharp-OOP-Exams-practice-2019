@@ -6,7 +6,7 @@
     using Contracts;
     using Models.Guns.Contracts;
 
-    class GunRepository : IRepository<IGun>
+    public class GunRepository : IRepository<IGun>
     {
         private List<IGun> guns;
 

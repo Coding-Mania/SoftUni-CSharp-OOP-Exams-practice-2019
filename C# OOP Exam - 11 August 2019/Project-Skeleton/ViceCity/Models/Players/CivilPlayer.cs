@@ -1,6 +1,6 @@
 ﻿namespace ViceCity.Models.Players
 {
-    public  class CivilPlayer : Player
+    public class CivilPlayer : Player
     {
         private const int InitialLifePoints = 50;
 

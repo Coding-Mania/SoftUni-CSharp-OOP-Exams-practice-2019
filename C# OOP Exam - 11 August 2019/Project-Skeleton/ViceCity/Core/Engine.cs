@@ -1,12 +1,11 @@
-﻿using ViceCity.Core.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using ViceCity.IO.Contracts;
-using ViceCity.IO;
-
-namespace ViceCity.Core
+﻿namespace ViceCity.Core
 {
+    using System;
+
+    using Contracts;
+    using IO;
+    using IO.Contracts;
+
     public class Engine : IEngine
     {
         private readonly IReader reader;
@@ -19,11 +18,13 @@ namespace ViceCity.Core
             this.writer = new Writer();
             this.controller = new Controller();
         }
+
         public void Run()
         {
             while (true)
             {
-                var input = reader.ReadLine().Split();
+                var input = this.reader.ReadLine().Split();
+
                 if (input[0] == "Exit")
                 {
                     Environment.Exit(0);

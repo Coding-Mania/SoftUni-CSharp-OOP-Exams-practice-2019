@@ -1,8 +1,8 @@
-﻿using System;
-
-namespace BlueOrigin
+﻿namespace BlueOrigin
 {
-    class Program
+    using System;
+
+    public class Program
     {
         static void Main(string[] args)
         {

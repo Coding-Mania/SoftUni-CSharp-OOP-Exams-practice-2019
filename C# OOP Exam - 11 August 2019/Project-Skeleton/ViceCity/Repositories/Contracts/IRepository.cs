@@ -1,10 +1,9 @@
-﻿using ViceCity.Models.Guns.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ViceCity.Repositories.Contracts
+﻿namespace ViceCity.Repositories.Contracts
 {
+    using System.Collections.Generic;
+
+    using Models.Guns.Contracts;
+
     public interface IRepository<T>
     {
         IReadOnlyCollection<T> Models { get; }
@@ -14,6 +13,5 @@ namespace ViceCity.Repositories.Contracts
         bool Remove(IGun model);
 
         IGun Find(string name);
-
     }
 }

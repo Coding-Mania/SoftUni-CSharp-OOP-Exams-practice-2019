@@ -56,7 +56,6 @@
 
             if (name == "Vercetti")
             {
-
                 this.mainPlayer.GunRepository.Add(gun);
 
                 return string.Format(OutputMessages.AddGunToPlayerVercetti, gun.Name);
@@ -85,7 +84,6 @@
 
         public string Fight()
         {
-
             if (this.mainPlayer.GunRepository.Models.Any(g => g.CanFire)
                 || this.players.Any(p => p.GunRepository.Models.Any(g => g.CanFire)))
             {

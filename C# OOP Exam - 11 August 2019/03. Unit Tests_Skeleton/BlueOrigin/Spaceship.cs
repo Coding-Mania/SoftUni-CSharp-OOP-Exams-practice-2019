@@ -6,9 +6,9 @@
 
     public class Spaceship
     {
+        private readonly ICollection<Astronaut> astronauts;
         private int capacity;
         private string name;
-        private readonly ICollection<Astronaut> astronauts;
 
         public Spaceship(string name, int capacity)
         {
@@ -25,7 +25,7 @@
         {
             get
             {
-                return name;
+                return this.name;
             }
             private set
             {
@@ -34,7 +34,7 @@
                     throw new ArgumentNullException(nameof(value), "Invalid spaceship name!");
                 }
 
-                name = value;
+                this.name = value;
             }
         }
 
@@ -42,7 +42,7 @@
         {
             get
             {
-                return capacity;
+                return this.capacity;
             }
             private set
             {
@@ -51,13 +51,13 @@
                     throw new ArgumentException("Invalid capacity!");
                 }
 
-                capacity = value;
+                this.capacity = value;
             }
         }
 
         public void Add(Astronaut astronaut)
         {
-            if (astronauts.Count == capacity)
+            if (this.astronauts.Count == this.capacity)
             {
                 throw new InvalidOperationException("Spaceship is full!");
             }

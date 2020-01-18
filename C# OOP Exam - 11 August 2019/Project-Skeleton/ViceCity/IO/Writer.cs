@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ViceCity.IO.Contracts;
-
-namespace ViceCity.IO
+﻿namespace ViceCity.IO
 {
+    using System;
+
+    using Contracts;
+
     public class Writer : IWriter
     {
         public void Write(string line)
