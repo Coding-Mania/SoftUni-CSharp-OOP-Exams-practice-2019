@@ -6,7 +6,7 @@ public class Army : IArmy
 
     public Army()
     {
-        this.soldiers = new List<ISoldier>() ;
+        this.soldiers = new List<ISoldier>();
     }
 
     public IReadOnlyList<ISoldier> Soldiers => this.soldiers.AsReadOnly();

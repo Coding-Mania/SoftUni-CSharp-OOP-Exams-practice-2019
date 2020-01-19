@@ -15,7 +15,9 @@ public class MissionController
         this.wareHouse = wareHouse;
         this.missionQueue = new Queue<IMission>();
     }
+
     public int SuccessMissionCounter { get; private set; }
+
     public int FailedMissionCounter { get; private set; }
 
     public Queue<IMission> Missions => this.missionQueue;
@@ -54,19 +56,13 @@ public class MissionController
         return sb.ToString();
     }
 
-    private bool ExecuteMission(IMission mission, List<ISoldier> missionTeam)
+    public void FailMissionsOnHold()
     {
-        if (missionTeam.Sum(w => w.OverallSkill) >= mission.ScoreToComplete)
+        while (this.missionQueue.Count > 0)
         {
-            foreach (ISoldier soldier in missionTeam)
-            {
-                soldier.CompleteMission(mission);
-            }
-            this.SuccessMissionCounter++;
-            return true;
+            this.FailedMissionCounter++;
+            this.missionQueue.Dequeue();
         }
-
-        return false;
     }
 
     private List<ISoldier> CollectMissionTeam(IMission mission)
@@ -75,12 +71,20 @@ public class MissionController
         return missionTeam;
     }
 
-    public void FailMissionsOnHold()
+    private bool ExecuteMission(IMission mission, List<ISoldier> missionTeam)
     {
-        while (this.missionQueue.Count > 0)
+        if (missionTeam.Sum(w => w.OverallSkill) >= mission.ScoreToComplete)
         {
-            this.FailedMissionCounter++;
-            this.missionQueue.Dequeue();
+            foreach (ISoldier soldier in missionTeam)
+            {
+                soldier.CompleteMission(mission);
+            }
+
+            this.SuccessMissionCounter++;
+
+            return true;
         }
+
+        return false;
     }
 }

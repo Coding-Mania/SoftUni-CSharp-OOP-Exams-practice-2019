@@ -13,12 +13,11 @@ public class GameController
     {
         this.army = new Army();
         this.wearHouse = new WareHouse();
-        this.missionController = new MissionController(army, wearHouse);
+        this.missionController = new MissionController(this.army, this.wearHouse);
         this.soldierFactory = new SoldierFactory();
         this.ammunitionFactory = new AmmunitionFactory();
         this.missionFactory = new MissionFactory();
     }
-
 
     public void GiveInputToGameController(string input)
     {
@@ -46,16 +45,16 @@ public class GameController
                 endurance = double.Parse(data[5]);
             }
 
-            var soldier = soldierFactory.CreateSoldier(type, name, age, experience, endurance);
+            var soldier = this.soldierFactory.CreateSoldier(type, name, age, experience, endurance);
 
-            army.AddSoldier(soldier);
+            this.army.AddSoldier(soldier);
         }
         else if (data[0].Equals("WearHouse"))
         {
             string name = data[1];
             int number = int.Parse(data[2]);
 
-            AddAmmunitions(ammunitionFactory.CreateAmmunition(name), number);
+            this.AddAmmunitions(this.ammunitionFactory.CreateAmmunition(name), number);
         }
         else if (data[0].Equals("Mission"))
         {
@@ -70,7 +69,7 @@ public class GameController
 
     public string RequestResult(StringBuilder result)
     {
-        Output.GiveOutput(result, army, wearHouse, this.missionController.Missions.Count);
+        Output.GiveOutput(result, this.army, this.wearHouse, this.missionController.Missions.Count);
 
         return result.ToString().TrimEnd();
     }

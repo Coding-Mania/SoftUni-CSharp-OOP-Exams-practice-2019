@@ -28,10 +28,11 @@ public class Engine
             {
                 result.AppendLine(arg.Message);
             }
-            input = reader.ReadLine();
+
+            input = this.reader.ReadLine();
         }
 
         gameController.RequestResult(result);
-        writer.WriteLine(result.ToString());
+        this.writer.WriteLine(result.ToString());
     }
 }

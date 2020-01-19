@@ -4,8 +4,7 @@ using System.Text;
 
     public static class Output
     {
-        public static void GiveOutput(StringBuilder result, IArmy army,
-            IWareHouse wearHouse, int missionQueueCount)
+        public static void GiveOutput(StringBuilder result, IArmy army, IWareHouse wearHouse, int missionQueueCount)
         {
             var orderedArmy = army.Soldiers.OrderBy(s => s.OverallSkill);
             int totalAmmunitions = 0;

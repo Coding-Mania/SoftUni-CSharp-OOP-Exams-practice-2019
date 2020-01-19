@@ -2,7 +2,7 @@
 
 public interface IWareHouse
 {
-    void EquipArmy(IArmy army);
-
     Dictionary<IAmmunition, int> Ammunitions { get; set; }
+
+    void EquipArmy(IArmy army);
 }

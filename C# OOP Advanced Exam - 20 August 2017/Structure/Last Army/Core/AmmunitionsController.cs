@@ -38,6 +38,7 @@
             {
                 wearHouse.Remove(weaponsForRemoval[i]);
             }
+
             weaponsForRemoval.Clear();
         }
     }

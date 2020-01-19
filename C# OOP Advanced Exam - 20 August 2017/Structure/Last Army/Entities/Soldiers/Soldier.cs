@@ -28,7 +28,6 @@ public abstract class Soldier : ISoldier
         get => this.endurance;
         protected set
         {
-
             this.endurance = Math.Min(100, value);
         }
     }

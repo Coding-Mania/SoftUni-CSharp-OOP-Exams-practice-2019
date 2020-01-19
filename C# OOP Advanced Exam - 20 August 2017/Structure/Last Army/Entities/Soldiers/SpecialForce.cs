@@ -20,7 +20,7 @@ public class SpecialForce : Soldier
     public SpecialForce(string name, int age, double experience, double endurance)
         : base(name, age, experience, endurance)
     {
-        foreach (var wepon in weaponsAllowed)
+        foreach (var wepon in this.weaponsAllowed)
         {
             this.Weapons[wepon] = null;
         }
